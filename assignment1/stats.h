@@ -35,6 +35,8 @@
  *
  * @return <Add Return Informaiton here>
  */
+void print_array(unsigned char * ptr, unsigned int size);
+unsigned char find_mean(unsigned char * ptr, unsigned int size);
 
 
 #endif /* __STATS_H__ */

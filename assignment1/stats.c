@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief Program calculates statistics of an array
  *
- * <Add Extended Description Here>
+ * Program runs various statistical functions for a defined array 'test'.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Alexes
+ * @date 12/15/18
  *
  */
 
@@ -36,8 +36,71 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  unsigned char median;
+  unsigned char mean;
+  unsigned char max;
+  unsigned char min;
 
+  /* Statistics and Printing Functions Go Here */
+  //print_array(test, SIZE);
+  
+  //median = find_median(test, SIZE);
+  mean = find_mean(test, SIZE);
+  //max = find_maximum(test, SIZE);
+  //min = find_minimum(test, SIZE);
+  
+  //print_statistics(mean, median, max, min);
+  
 }
 
 /* Add other Implementation File Code Here */
+void print_statistics(unsigned char mean, unsigned char median, unsigned char maximum, unsigned char minimum) {
+	
+  printf("Median: %u, Mean: %u, Max: %u, Min: %u", mean, median, maximum, minimum);
+}
+
+void print_array(unsigned char * ptr, unsigned int size) {
+  int i;
+
+  if (ptr == NULL){
+    return;
+  }
+
+  for(i = 0; i < size; i++) {
+    printf("%d\n", *ptr);
+    ptr++;
+  }
+}
+
+unsigned char find_median(unsigned char * ptr, unsigned int size) {
+  int i;
+
+  for(i=0; i < size; i++) {
+     ++ptr;
+  }
+  
+}
+
+unsigned char find_mean(unsigned char * ptr, unsigned int size) {
+  int i;
+  unsigned int sum = 0;
+
+  if (ptr == NULL) {
+    return 0;
+  }
+
+  for(i = 0; i < size; i++) {
+    sum += *ptr;
+    ptr++;
+  }
+  return (sum/size);
+}
+
+unsigned char find_maximum(unsigned char * ptr, unsigned int size) {
+}
+
+unsigned char find_minimum(unsigned char * ptr, unsigned int size) {
+}
+
+void sort_array() {
+}

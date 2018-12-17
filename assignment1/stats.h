@@ -37,6 +37,7 @@
  */
 void print_array(unsigned char * ptr, unsigned int size);
 unsigned char find_mean(unsigned char * ptr, unsigned int size);
-
+unsigned char find_maximum(unsigned char * ptr, unsigned int size);
+unsigned char find_minimum(unsigned char * ptr, unsigned int size);
 
 #endif /* __STATS_H__ */

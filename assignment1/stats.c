@@ -42,24 +42,23 @@ void main() {
   unsigned char min;
 
   /* Statistics and Printing Functions Go Here */
-  //print_array(test, SIZE);
+	sort_array(test, SIZE);  
+	print_array(test, SIZE);
   
-  //median = find_median(test, SIZE);
+  median = find_median(test, SIZE);
   mean = find_mean(test, SIZE);
   max = find_maximum(test, SIZE);
   min = find_minimum(test, SIZE);
 
-  printf("MAX: %d", max);
-  printf("MIN: %d", min);
   
-  //print_statistics(mean, median, max, min);
+  print_statistics(mean, median, max, min);
   
 }
 
 /* Add other Implementation File Code Here */
 void print_statistics(unsigned char mean, unsigned char median, unsigned char maximum, unsigned char minimum) {
 	
-  printf("Median: %d, Mean: %d, Max: %d, Min: %d\n", mean, median, maximum, minimum);
+  printf("\nMedian: %d, Mean: %d, Max: %d, Min: %d\n", median, mean, maximum, minimum);
 }
 
 void print_array(unsigned char * ptr, unsigned int size) {
@@ -77,9 +76,18 @@ void print_array(unsigned char * ptr, unsigned int size) {
 
 unsigned char find_median(unsigned char * ptr, unsigned int size) {
   int i;
+	unsigned int split = size/2;
+	unsigned int med1;
+	unsigned int med2;
 
-  for(i=0; i < size; i++) {
-     ++ptr;
+	if(size%2 != 0) {
+		//split at half
+ 		return *(ptr + (sizeof(unsigned char) * split));
+  }
+	else {
+		med1 = *(ptr + (sizeof(unsigned char) * split));
+		med2 = *(ptr + (sizeof(unsigned char) * (split + 1)));
+		return (med1 + med2)/2;
   }
   
 }
@@ -134,5 +142,23 @@ unsigned char find_minimum(unsigned char * ptr, unsigned int size) {
 
 }
 
-void sort_array() {
+void sort_array(unsigned char * ptr, unsigned int size) {
+  unsigned int i;
+  unsigned int j;
+  unsigned char temp;
+	unsigned char valuei;
+ 	unsigned char valuej;
+
+  for(i = 0; i < size; i++) {
+    for(j = i+1; j < size; j++) {
+			valuei = *(ptr + (sizeof(unsigned char) * i));
+			valuej = *(ptr + (sizeof(unsigned char) * j));
+ 		
+      if( valuei < valuej ) {
+      	temp = valuei;
+				*(ptr + (sizeof(unsigned char) * i)) = valuej;
+				*(ptr + (sizeof(unsigned char) * j)) = temp;
+      }
+    }
+  }
 }
